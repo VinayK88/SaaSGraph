@@ -115,12 +115,12 @@ The checked-in report is [`reports/baseline.json`](reports/baseline.json).
 | Application | Pattern | Risk |
 | --- | --- | ---: |
 | `AnalyticsSync` | unverified publisher + admin consent + broad file scopes + persistent token + extreme API spike | **CRITICAL · 100** |
-| `DataMover` | broad file/mail access + admin consent + persistent token + large user reach + high API deviation | **CRITICAL · 78** |
-| `Acme Support Tools` | unverified external app + mail/contacts access + persistent token + API spike | **HIGH_RISK · 61** |
+| `MigrationAssistant` | broad file/mail access + admin consent + persistent token + large user reach + high API deviation | **CRITICAL · 78** |
+| `SupportTools` | unverified external app + mail/contacts access + persistent token + API spike | **HIGH_RISK · 67** |
 | `LegacyExport` | dormant admin-consented directory integration retaining persistent access | **HIGH_RISK · 53** |
 | `BuildBot` | admin-consented engineering integration with persistent access | **REVIEW · 40** |
 | `PayrollConnector` | verified but persistent admin-consented business integration | **REVIEW · 35** |
-| `NotesLite` | small external app with low-sensitivity access | **NORMAL · 16** |
+| `NotesLite` | small external app with low-sensitivity access | **NORMAL · 22** |
 | `CalendarHelper` | verified, narrow, non-persistent access | **NORMAL · 9** |
 
 ---
@@ -248,7 +248,7 @@ The implementation is intentionally simple enough to audit. A production graph c
 SAASGRAPH FINDING
 
 Application              AnalyticsSync
-Publisher                DataWorks Labs
+Publisher                Synthetic External Publisher
 Publisher verified       NO
 Admin consent            YES
 Persistent token         YES
