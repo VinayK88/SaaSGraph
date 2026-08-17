@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "saasgraph"
-version = "0.1.0"
-description = "Synthetic OAuth and SaaS exposure analysis lab"
+version = "0.2.0"
+description = "OAuth and SaaS exposure analysis with hybrid behavioral ML"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["scikit-learn==1.7.2"]
 
 [project.optional-dependencies]
 api = ["fastapi>=0.110", "uvicorn>=0.29"]
