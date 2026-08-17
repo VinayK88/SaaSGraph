@@ -17,6 +17,8 @@
 
 ---
 
+![SaaSGraph dashboard preview](assets/dashboard-preview.svg)
+
 ![SaaSGraph OAuth and SaaS exposure overview](assets/saasgraph-overview.svg)
 
 ## Overview
