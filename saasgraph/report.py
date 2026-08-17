@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import Counter
 
 from .engine import assess, blast_radius
+from .evaluation import evaluation_summary
 from .fixtures import apps
 from .ml import analyze_apps, ml_summary
 
@@ -32,6 +33,7 @@ def build_report() -> dict:
         },
         "ml": ml_summary(inventory),
         "ml_findings": [row.to_dict() for row in ml_findings],
+        "model_monitoring_and_robustness": evaluation_summary(inventory),
         "assessments": [a.to_dict() for a in assessments],
         "blast_radius": [blast_radius(app) for app in inventory],
         "boundary": "Synthetic, defensive portfolio data only; rule and ML scores are not production compromise probabilities.",
