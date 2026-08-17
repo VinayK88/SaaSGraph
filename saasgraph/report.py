@@ -4,11 +4,13 @@ from collections import Counter
 
 from .engine import assess, blast_radius
 from .fixtures import apps
+from .ml import analyze_apps, ml_summary
 
 
 def build_report() -> dict:
     inventory = apps()
     assessments = [assess(app) for app in inventory]
+    ml_findings = analyze_apps(inventory)
     levels = Counter(a.risk_level.value for a in assessments)
     matched = sum(a.risk_level == app.expected_level for a, app in zip(assessments, inventory))
     mean_risk = round(sum(a.risk_score for a in assessments) / len(assessments), 1)
@@ -28,7 +30,9 @@ def build_report() -> dict:
             "highest_risk_app": highest.name,
             "highest_risk_score": highest.risk_score,
         },
+        "ml": ml_summary(inventory),
+        "ml_findings": [row.to_dict() for row in ml_findings],
         "assessments": [a.to_dict() for a in assessments],
         "blast_radius": [blast_radius(app) for app in inventory],
-        "boundary": "Synthetic, defensive portfolio data only; not a production tenant assessment.",
+        "boundary": "Synthetic, defensive portfolio data only; rule and ML scores are not production compromise probabilities.",
     }
